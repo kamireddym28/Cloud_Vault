@@ -1,8 +1,9 @@
 import React,{Component} from "react";
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Navbar} from 'react-bootstrap';
 import axios from 'axios';
 import {Redirect}  from 'react-router';
-import urls from './utils'
+import urls from './utils';
+import {Header} from "./Header";
 
 export class UserSignin extends Component{
     state={
@@ -56,24 +57,24 @@ export class UserSignin extends Component{
         }
         return(
             <div>
-            <div className="fixed-top text-light bg-dark"><h4>Signin</h4></div>
+            {/* <Navbar bg="dark" variant="dark" sticky="top">
+               <Navbar.Brand>File Manager</Navbar.Brand>
+        </Navbar>*/}
             <Container>
             {redirectTo}
-                <Row className="signup_signin_panel">
-                    <Col xs={6} className="card signupsignin-card">
-                        <h5 id="SignInText">Sign in</h5>    
-                        <hr/>
+                {Header}
+                <Row className="userpanel">
+                    <Col xs={6} className="card usercard">
+                        <h5 id="SignInText">User Sign In</h5>
                         <form onSubmit={this.submitHandler}>
                             <div className="form-group">
-                                <label className="control-label">Email</label>
-                                <input type="email" name="email" required className="form-control" placeholder="Enter your Email"/>
+                                <input type="email" name="email" required className="form-control" placeholder="Email"/>
                             </div>
                             <div className="form-group">
-                                <label className="control-label">Password</label>
                                 <input type="password" name="password" required className="form-control" placeholder=" Password"/>
                             </div>
                             <div className="form-group">
-                                <button type="submit" className="btn btn-success" onSubmit={this.redirectTo}>Submit</button>
+                                <button type="submit" className="btn btn-success">Submit</button>
                             </div>
                             <div className="form-group">
                             <label> New User? Please Signup <a href="/usersignup">here</a> first to login</label>

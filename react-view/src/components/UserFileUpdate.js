@@ -30,8 +30,8 @@ const UserFileUpdate = (params) => {
           alert("Cannot update file")
         }
       });
-
     } catch (error) {
+      console.log(error)
     }
   };
   const [show, setShow] = useState(false);

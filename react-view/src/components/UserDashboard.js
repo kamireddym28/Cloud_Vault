@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {Table, Button, Container} from 'react-bootstrap';
+import {Table, Button, Container, Row, Col, Navbar} from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import UserFileUpload from "./UserFileUpload"
@@ -61,17 +61,12 @@ export class UserDashboard extends Component{
         });
     }
 
-    
-
-
     renderAllFiles = () =>{
         let fileMarkup = []
         if(this.state.fileList && this.state.fileList.length >0){
             for(let file of this.state.fileList){
                 let tdMarkup = []
                 const download_url = "https://d2fm7gtvkx48d9.cloudfront.net/"+file.bucketFileName
-                tdMarkup.push(<td>{localStorage.getItem("firstname")}</td>)
-                tdMarkup.push(<td>{localStorage.getItem("lastname")}</td>)
                 tdMarkup.push(<td>{file.filename}</td>)
                 tdMarkup.push(<td>{file.filedescription}</td>)
                 tdMarkup.push(<td>{file.dateuploaded}</td>)
@@ -90,21 +85,25 @@ export class UserDashboard extends Component{
             return (<div></div>)
         } else if (!this.state.fileList || this.state.fileList.length == 0){
             return ( 
-                <div>No files</div>
+                <div>No uploaded files</div>
                 )
         } else {
             return(
-              
-                <Table>
+                <div>
+                <h5>
+                   Uploaded files
+                </h5>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>First Name</th> <th>Last Name</th> <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th>
+                        <th>First Name</th> <th>Last Name</th><th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> 
                         </tr>
                     </thead>
                     <tbody>
                     {this.renderAllFiles()}
                      </tbody>
                 </Table>
+                </div>
              );
         }
     }
@@ -124,16 +123,22 @@ export class UserDashboard extends Component{
         let firstname = localStorage.getItem("firstname")
         let lastname = localStorage.getItem("lastname")
         
-    return (<Container>
+    return (
+        <div>
+        <Navbar bg="dark" variant="dark" sticky="top">
+        <Navbar.Brand>User Dashboard</Navbar.Brand>
+        <Navbar.Brand style={{marginLeft:"auto"}}>{firstname+" "+lastname}</Navbar.Brand>
+        &nbsp;&nbsp;&nbsp;
+        <Navbar.Brand><a onClick={()=>this.logoff()}>Logoff</a></Navbar.Brand>
+        </Navbar>
+    <Container>
         {redirectTo}
-        <div className="fixed-top text-light bg-dark"><h4>User Dashboard</h4>
-            <span>{firstname+" "+lastname}</span>&nbsp;&nbsp;
-            <span><a onClick={()=>this.logoff()}>Logoff</a></span>
-        </div>
         <br/><br/>
         <UserFileUpload></UserFileUpload>
+        <br/><br/>
         {this.renderBody()}
-    </Container>)
+    </Container>
+    </div>)
         
     }
     

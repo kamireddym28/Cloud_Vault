@@ -30,9 +30,8 @@ const UserFileUpload = () => {
           alert("Cannot upload file")
         }
       });;
-      
     } catch (error) {
-      
+      console.log(error)
     }
   };
 
@@ -43,7 +42,7 @@ const UserFileUpload = () => {
 
   return (
     <Container>
-      <Button onClick={handleShow}>Upload File</Button>
+      <Button onClick={handleShow}>Upload A File</Button>
       <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
           <Modal.Title>File Details</Modal.Title>

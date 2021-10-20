@@ -47,8 +47,9 @@ var allowedOrigins = ['http://cloud-vault-dev.us-east-2.elasticbeanstalk.com/', 
 });
 
 //start your server on port 8080
-app.listen(8080);
-console.log("Server Listening on port 8080");
+const port = process.env.PORT || 8080;
+app.listen(port);
+console.log("Server Listening on port ", port);
 
 app.use("/", signupAndSignIn);
 app.use("/", Uploadfile);

@@ -8,6 +8,8 @@ node_modules/
 package-lock.json
 .DS_Store
 *.csv
+node-express/server.js
+build/
 
 /.pnp
 .pnp.js
@@ -16,12 +18,6 @@ package-lock.json
 **/.elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-# testing
-/coverage
-
-# production
-/build
 
 # misc
 .env.local

@@ -36,16 +36,16 @@ var upload= multer({
     }
   }),
   limits: {
-        fileSize: 10000000   // Max limit of file that will be accepted is 10MB
-    }
+    fileSize: 10000000   // Max limit of file that will be accepted is 10MB
+  }
 });
 
 router.post("/uploadFile",upload.single('file'), async function(req, res){
   let uploadStatus = false, message="Cannot upload file"
- try{
-    let{filename, filedesc, userid, firstname, lastname} = req.body;
+  try {
+    let {filename, filedesc, userid, firstname, lastname} = req.body;
     let dateUploaded = new Date().toLocaleString()
-  let bucketFileName;
+    let bucketFileName;
     if (req.file) {
         bucketFileName = req.file.key;
     }
@@ -60,32 +60,31 @@ router.post("/uploadFile",upload.single('file'), async function(req, res){
                 dateUploaded
                 };
                 console.log(filedetails)
-   await conn.query('COMMIT')
-   uploadStatus = true
-   message = "File upload is successful"
- } catch(e){
-     console.log(e)
+    await conn.query('COMMIT')
+    uploadStatus = true
+    message = "File upload is successful"
+  } catch(e){
+    console.log(e)
     uploadStatus = false
-
- } finally{
+  } finally{
     res.status(200).json({
         status:uploadStatus,
         message: message
     });
-    }
-  });
+  }
+});
 
   
   router.get("/deleteFile", async function(req, res){
-   try{
-       console.log(req.query)
-      let{bucketFileName, fileid} = req.query;
+   try {
+      console.log(req.query)
+      let {bucketFileName, fileid} = req.query;
       var params = {
         Bucket: 'bucket-files3',
         Key: bucketFileName
-    };
-    let results, fileDelStatus = false;
-    s3.deleteObject(params, async function (err, data) {
+      };
+      let results, fileDelStatus = false;
+      s3.deleteObject(params, async function (err, data) {
         if (data) {
           console.log(data);
           let conn = await dbConnPool.getConnection();
@@ -101,18 +100,17 @@ router.post("/uploadFile",upload.single('file'), async function(req, res){
             results
         }
         res.end(JSON.stringify(responseObj));
-    });
-      
-   } catch(e){
-       console.log(e)
+      });      
+    } catch(e) {
+      console.log(e)
   
-   } finally{
+    } finally {
       /*res.status(200).json({
           status:fileFetchStatus,
           fileList
       });*/
-      }
-    });
+    }
+  });
 
     router.post("/updateFile", upload.single('file'), async function(req, res){
         let bucketFileName, fileUpdateStatus = false, fileList;

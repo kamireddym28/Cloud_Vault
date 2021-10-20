@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var aws      =require('aws-sdk');
+var aws = require('aws-sdk');
 var app = express();
 var cors = require('cors');
 var conUtils = require('./connectionUtils.js')

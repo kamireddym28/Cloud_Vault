@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
   var allowedOrigins = [
     'cloud-vault-mounicakamireddy',
     'cloud-vault-dev.us-east-2.elasticbeanstalk',
-    'localhost:3000'
+    'localhost'
   ];
     var origin = req.headers.origin;
     allowedOrigins.forEach(o => {

@@ -21,7 +21,7 @@ export class AdminSignin extends Component{
         axios.defaults.withCredentials = true;
         await axios({
             method: 'post',
-            url: urls.backendURL+"/adminsignin",
+            url: urls.backendURL+"/serveradminsignin",
             // data: {"jsonData" : JSON.stringify(data)},
             data: { "email": formData.get('email'), "password": formData.get('password')},
             config: { headers: { 'Content-Type': 'multipart/form-data' } }

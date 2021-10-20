@@ -57,12 +57,11 @@ export class UserSignin extends Component{
         }
         return(
             <div>
-            {/* <Navbar bg="dark" variant="dark" sticky="top">
-               <Navbar.Brand>File Manager</Navbar.Brand>
-        </Navbar>*/}
+             <Navbar bg="dark" variant="dark" sticky="top">
+               <Navbar.Brand>Cloud Vault</Navbar.Brand>
+           </Navbar>
             <Container>
             {redirectTo}
-                {Header}
                 <Row className="userpanel">
                     <Col xs={6} className="card usercard">
                         <h5 id="SignInText">User Sign In</h5>

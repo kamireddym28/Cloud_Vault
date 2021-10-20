@@ -71,6 +71,7 @@ export class UserDashboard extends Component{
                 tdMarkup.push(<td>{file.filedescription}</td>)
                 tdMarkup.push(<td>{file.dateuploaded}</td>)
                 tdMarkup.push(<td>{file.datemodified}</td>)
+                tdMarkup.push(<td>{file.firstname+" "+file.lastname}</td>)
                 tdMarkup.push(<td><UserFileUpdate fileid={file.fileid} bucketFileName={file.bucketFileName}/></td>)
                 tdMarkup.push(<td><a href = {download_url} target="_blank"><Button>Download</Button></a></td>)
                 tdMarkup.push(<td><Button onClick={()=>this.deleteFile(file.fileid, file.bucketFileName)}>DeleteFile</Button></td>) 
@@ -96,7 +97,7 @@ export class UserDashboard extends Component{
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>First Name</th> <th>Last Name</th><th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> 
+                        <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> <th>User name</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,6 +123,7 @@ export class UserDashboard extends Component{
         }
         let firstname = localStorage.getItem("firstname")
         let lastname = localStorage.getItem("lastname")
+        console.log(firstname+" "+lastname)
         
     return (
         <div>
@@ -129,15 +131,15 @@ export class UserDashboard extends Component{
         <Navbar.Brand>User Dashboard</Navbar.Brand>
         <Navbar.Brand style={{marginLeft:"auto"}}>{firstname+" "+lastname}</Navbar.Brand>
         &nbsp;&nbsp;&nbsp;
-        <Navbar.Brand><a onClick={()=>this.logoff()}>Logoff</a></Navbar.Brand>
+        <Navbar.Brand><a onClick={()=>this.logoff()}>Logout</a></Navbar.Brand>
         </Navbar>
-    <Container>
-        {redirectTo}
-        <br/><br/>
-        <UserFileUpload></UserFileUpload>
-        <br/><br/>
-        {this.renderBody()}
-    </Container>
+        <Container>
+            {redirectTo}
+            <br/><br/>
+            <UserFileUpload></UserFileUpload>
+            <br/><br/>
+            {this.renderBody()}
+        </Container>
     </div>)
         
     }

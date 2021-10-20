@@ -92,7 +92,7 @@ export class AdminDashboard extends Component{
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> <th>User name</th>
+                         <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> <th>User name</th>
                         </tr>
                     </thead>
                     <tbody>

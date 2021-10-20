@@ -64,9 +64,9 @@ export class AdminSignup extends Component{
     render(){
         return(
             <div>
-            {/* <Navbar bg="dark" variant="dark" sticky="top">
-               <Navbar.Brand>File Manager</Navbar.Brand>
-        </Navbar>*/}
+            <Navbar bg="dark" variant="dark" sticky="top">
+               <Navbar.Brand>Cloud Vault</Navbar.Brand>
+            </Navbar>
             <Container>
                 <Row className="adminpanel">
                     <Col xs={6}  className="card admincard">

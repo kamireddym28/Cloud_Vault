@@ -7,6 +7,7 @@ node_modules/
 /prod_build/
 package-lock.json
 .DS_Store
+*.csv
 
 /.pnp
 .pnp.js

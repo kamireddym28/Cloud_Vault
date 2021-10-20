@@ -7,11 +7,16 @@ var conUtils = require('./connectionUtils.js')
 var signupAndSignIn = require('./routes/signupAndSignIn');
 var Uploadfile = require('./routes/Uploadfile')
 var fetchFiles = require('./routes/fetchFiles')
+var config = require('./config.json')
 
-aws.config.loadFromPath('config.json')
-aws.config.update({
-  signatureVersion: 'v4'
-})
+function loadAWSConfig() {
+  aws.config.update({
+    ...config,
+    signatureVersion: 'v4',
+  });
+}
+
+loadAWSConfig();
 
 app.use(express.json());
 
@@ -37,9 +42,9 @@ var allowedOrigins = ['http://cloud-vault-dev.us-east-2.elasticbeanstalk.com/', 
     next();
 });
 
-//start your server on port 8081
-app.listen(8081);
-console.log("Server Listening on port 8081");
+//start your server on port 8080
+app.listen(8080);
+console.log("Server Listening on port 8080");
 
 app.use("/", signupAndSignIn);
 app.use("/", Uploadfile);

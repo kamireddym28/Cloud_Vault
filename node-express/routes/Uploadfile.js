@@ -5,12 +5,16 @@ var multer   =require('multer');
 var multers3 =require('multer-s3');
 const path = require('path');
 const dbConnPool = require("../connectionUtils");
+const config = require('../config.json');
 
-//  aws.config.loadFromPath(path.resolve(__dirname, '../config.json'));
- aws.config.loadFromPath('config.json')
- aws.config.update({
-   signatureVersion: 'v4'
- })
+function loadAWSConfig() {
+  aws.config.update({
+    ...config,
+    signatureVersion: 'v4',
+  });
+}
+
+loadAWSConfig();
 
 var s3 = new aws.S3({});
 

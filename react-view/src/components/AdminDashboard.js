@@ -1,14 +1,14 @@
 import React,{Component} from "react";
-import {Table, Row, Col, Button, Container} from 'react-bootstrap';
+import {Table, Row, Col, Button, Container, Navbar} from 'react-bootstrap';
+import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import UserFileUpdate from "./UserFileUpdate"
-import urls from "./utils"
-
 
 export class AdminDashboard extends Component{
     state={
         fileList:"",
-        loading: true
+        loading: true,
+        reload:false
     }
     constructor(props){
         super(props);
@@ -64,12 +64,11 @@ export class AdminDashboard extends Component{
         if(this.state.fileList && this.state.fileList.length >0){
             for(let file of this.state.fileList){
                 let tdMarkup = []
-                tdMarkup.push(<td>{localStorage.getItem("firstname")}</td>)
-                tdMarkup.push(<td>{localStorage.getItem("lastname")}</td>)
                 tdMarkup.push(<td>{file.filename}</td>)
                 tdMarkup.push(<td>{file.filedescription}</td>)
                 tdMarkup.push(<td>{file.dateuploaded}</td>)
                 tdMarkup.push(<td>{file.datemodified}</td>)
+                tdMarkup.push(<td>{file.firstname+" "+file.lastname}</td>)
                 tdMarkup.push(<td><UserFileUpdate fileid={file.fileid} bucketFileName={file.bucketFileName}/></td>)
                 tdMarkup.push(<td><Button onClick={()=>this.deleteFile(file.fileid, file.bucketFileName)}>DeleteFile</Button></td>)
                 fileMarkup.push(<tr>{tdMarkup}</tr>)
@@ -82,32 +81,58 @@ export class AdminDashboard extends Component{
         if(this.state.loading){
             return (<div></div>)
         } else if (!this.state.fileList || this.state.fileList.length == 0){
-            return <div>No files</div>
+            return <div>No files are uploaded by users</div>
         } else {
             return(
-                <Table>
+                <div>
+                <h5>
+                   Files uploaded by Users
+                </h5>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>First Name</th> <th>Last Name</th> <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th>
+                        <th>File name</th>  <th>File Description</th>  <th>Date uploaded</th> <th>Date modified</th> <th>User name</th>
                         </tr>
-                       
                     </thead>
                     <tbody>
-                    {this.renderAllFiles()}
-                     </tbody>
+                        {this.renderAllFiles()}
+                    </tbody>
                 </Table>
+                </div>
              );
         }
     }
-    
-    render(){
-    return (
-    <Container>
-        {this.renderBody()}
-    </Container>)
-        
+    logoff(){
+        localStorage.clear()
+        this.setState({
+            reload:true
+        })
     }
-    
+
+    render(){
+        let adminid = localStorage.getItem("adminid");
+        let redirectTo = <div></div>
+        if(!adminid){
+            redirectTo = <Redirect to="/adminsignin"/>
+        }
+        let firstname = localStorage.getItem("firstname")
+        let lastname = localStorage.getItem("lastname")
+        return (
+            <div>
+                <Navbar bg="dark" variant="dark" sticky="top">
+        <Navbar.Brand>Admin Dashboard</Navbar.Brand>
+        <Navbar.Brand style={{marginLeft:"auto"}}>{firstname+" "+lastname}</Navbar.Brand>
+        &nbsp;&nbsp;&nbsp;
+        <Navbar.Brand><a onClick={()=>this.logoff()}>Logout</a></Navbar.Brand>
+        </Navbar>
+        <Container>
+        {redirectTo}
+        <br/><br/>
+            {this.renderBody()}
+        </Container>
+        </div>
+        )
+    }
 }
 
 export default AdminDashboard;

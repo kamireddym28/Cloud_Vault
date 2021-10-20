@@ -34,6 +34,8 @@ app.get('/usersignup', serveReact);
 app.get('/fileupload', serveReact);
 app.get('/updatefile', serveReact);
 app.get('/admindashboard', serveReact);
+app.get('/adminsignin', serveReact);
+app.get('/adminsignup', serveReact);
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');

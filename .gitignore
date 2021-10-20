@@ -9,6 +9,7 @@ package-lock.json
 .DS_Store
 *.csv
 node-express/server.js*
+node-express/config.json
 build/
 
 /.pnp

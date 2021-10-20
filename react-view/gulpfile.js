@@ -85,6 +85,6 @@ exports.default = series(
   copyReactCodeTask,
   buildNodeJSCodeTask,
   copyNodeJSCodeTask,
-  copyNodeJSConfigTask,
+  // copyNodeJSConfigTask,
   zippingTask
 );

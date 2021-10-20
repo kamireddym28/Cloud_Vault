@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.userpanel .usercard, .adminpanel .admincard {
+  padding : 50px;
+  margin-left:300px;
+  margin-right:200px;
+  margin-top:100px;
+  box-shadow: 0 0 0 1px rgba(67,41,163,.08), 0 1px 5px 0 rgba(67,41,163,.08);
+}
+
+.text {
+  color: white;
+}

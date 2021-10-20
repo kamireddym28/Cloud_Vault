@@ -20,7 +20,7 @@ loadAWSConfig();
 
 app.use(express.json());
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(path.join(__dirname, '/react-view/build')));
 app.set('views', path.join(__dirname, 'views'));
 
 

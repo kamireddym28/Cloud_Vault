@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post("/usersignup", async function(req, res){
+router.post("/serversignup", async function(req, res){
   let{email, password, fname, lname} = req.body;
   var signupStatus= false, message="Sign up is not successful";
   console.log("In signup user route..");
@@ -36,7 +36,7 @@ router.post("/usersignup", async function(req, res){
   }
 });
 
-router.post("/usersignin", async function(req, res){
+router.post("/serversignin", async function(req, res){
     console.log("in signin route..");
     console.log(req.body);
     let {email, password}  = req.body;

@@ -24,9 +24,16 @@ const reactAppPath = path.join(__dirname, '/react-view/build');
 app.use(express.static(reactAppPath));
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/userdashboard', (req, res) => {
+const serveReact = (req, res) => {
   res.sendFile(path.join(reactAppPath, 'index.html'));
-});
+}
+
+app.get('/userdashboard', serveReact);
+app.get('/usersignin', serveReact);
+app.get('/usersignup', serveReact);
+app.get('/fileupload', serveReact);
+app.get('/updatefile', serveReact);
+app.get('/admindashboard', serveReact);
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');

@@ -20,7 +20,7 @@ export class UserSignup extends Component{
         axios.defaults.withCredentials = true;
         await axios({
             method: 'post',
-            url: urls.backendURL+"/usersignup",    
+            url: urls.backendURL+"/serversignup",
             data: { "fname": formData.get('fname'), "lname": formData.get('lname'),"email": formData.get('email'), "password": formData.get('password')},
             config: { headers: { 'Content-Type': 'multipart/form-data' } }
         })

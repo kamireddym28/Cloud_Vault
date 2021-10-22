@@ -34,6 +34,8 @@ Hosted on AWS using Route53 at http://www.cloud-vault-mounicakamireddy.link/
 
 - On every operation, database updates were made to reflect the latest changes.
 
+- A Lamda function that triggers an notification using SNS when ever there is a PUT into S3 bucket has been configured (screenshot is available in images/).
+
 # Technology Stack:
 
 **Frontend**: React, Bootstrap

@@ -44,6 +44,10 @@ Hosted on AWS using Route53 at http://www.cloud-vault-mounicakamireddy.link/
 
 **Tools**: MySQL Work Bench, AWS-SDK for Node
 
+# Architecture Diagram:
+
+![image](https://user-images.githubusercontent.com/27188674/138378368-663e5e3d-ce60-424f-9260-1d15994c46da.png)
+
 
 
 

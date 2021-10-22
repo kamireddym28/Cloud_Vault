@@ -40,7 +40,7 @@ Hosted on AWS using Route53 at http://www.cloud-vault-mounicakamireddy.link/
 
 **Frontend**: React, Bootstrap
 
-**Backend**: Node 17.x, Express
+**Backend**: Node 14.x, Express
 
 **Database**: Amazon RDS (MySQL)
 

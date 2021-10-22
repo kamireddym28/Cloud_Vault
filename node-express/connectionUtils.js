@@ -1,9 +1,9 @@
 var mysql = require('promise-mysql');
 var configDB = {
     connectionLimit: 10000,
-    host: "file-db.c7dok1izn8lr.us-east-2.rds.amazonaws.com",
-    user: "admin",
-    password: "Kajal4846",
+    host: "xxx",
+    user: "xxx",
+    password: "xxx",
     port: 3306
 }
 

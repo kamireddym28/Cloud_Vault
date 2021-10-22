@@ -1,6 +1,6 @@
 # Cloud Vault -- CMPE 281 -- Project1
 
-A 3-tier cloud-based file management application hosted in AWS where users will be able to store and manage their files. Authorized users will be able to manage their files by performing CRUD operations by uploading, downloading, updating and deleting any file of size 10 MB. In admin mode, admin will be given access to view list of files from all the users along with privileges to delete users’ files.
+> A 3-tier cloud-based file management application hosted in AWS where users will be able to store and manage their files. Authorized users will be able to manage their files by performing CRUD operations by uploading, downloading, updating and deleting any file of size 10 MB. In admin mode, admin will be given access to view list of files from all the users along with privileges to delete users’ files.
 
 Hosted on AWS using Route53 at http://www.cloud-vault-mounicakamireddy.link/
 
@@ -8,7 +8,7 @@ Hosted on AWS using Route53 at http://www.cloud-vault-mounicakamireddy.link/
 
 **Route53**: This application is hosted on web using Route53, a registered web domain provided by AWS.
 
-**Elastic Beanstalk**: Cloud vault was deployed using Elastic bean stalk, a service to host web applications. It manages the web application using important features such as load balancing, auto scaling, health monitoring etc. It comes with EC2 instances by default.
+**Elastic Beanstalk**: Cloud vault was deployed using Elastic bean stalk, a service to host web applications. It manages the web application by keeping track of important features such as load balancing, auto scaling, health monitoring etc. It comes with EC2 instances by default.
 
 **S3**: S3 bucket was used to store the files in AWS where a life cycle policy was enabled for the bucket in such a way that the files exist in standard s3 for 75 days, then moves to standard IA and stays there for 365 days and then moves to s3 glacier for another 365 days and finally gets deleted. Transfer acceleration was enabled to avoid any delays due to internet routing and speed.
 
